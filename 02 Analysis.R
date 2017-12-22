@@ -199,9 +199,19 @@ ggsave(
   scale = 3
 )
 
+# Now lets try not just different cutpoints but also Eps
+# To do this we will modify our functions for clarities sake.
+# We will make a list with individual elements 'cutpoint' and 'Ep'
+# We take advantage of the 'cross' function from purrr
 
 conditions = list(cutpoint = seq(1.2, 1.8, 0.01),
-                  ep = c(0.025,0.05,0.1)) %>% cross()
+                  ep = c(0.025,0.05,0.1)) %>%
+  cross()
+
+# because the object we are now passing is a list with sub vectors of length 1
+# we can now address them by using the .$ method
+# Alternative methods could use pmap or map2 however you need even length 
+# lists / vectors which means mucking around with rep
 
 df_yields_ep = conditions %>%
   map(~ apply_partition_curve(
