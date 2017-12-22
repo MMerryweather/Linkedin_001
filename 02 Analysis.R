@@ -230,17 +230,23 @@ df_yields_ep %>%
   geom_line() +
   scale_colour_ipsum()+
   theme_ipsum()+
-  geom_text(data = filter(df_yields_ep, cutpoint == 1.3) %>% mutate(ep = as.factor(ep)),
-            aes(label = ep,x = product_ash/100, y = product_mass/100),
-            hjust="left", 
-            nudge_x = 0.001)+
-  no_legend()+
-  scale_x_continuous(labels = scales::percent_format())+
-  scale_y_continuous(labels = scales::percent_format())+
-  labs(title = "Sensitivity Analysis: Ep",
-       subtitle = "Yield-Ash Curves",
+  scale_x_continuous(labels = scales::percent_format(),
+                     limits = c(0, 0.15))+
+  scale_y_continuous(labels = scales::percent_format(),
+                     limits = c(0,1))+
+  labs(title = "Model Ash-Yield Curves",
+       subtitle = "Sensitivity Analysis on Ep",
        x = "Product Ash",
-       y = "Product Yield")
+       y = "Product Yield")+
+  theme(
+    legend.position = c(.95, .95),
+    legend.direction = "vertical",
+    legend.justification = c("right", "top"),
+    legend.box.just = "right",
+    legend.margin = margin(6, 6, 6, 6),
+    legend.box.background = element_rect(colour = "white")
+  )+
+  no_legend_title()
 
 df_yields_ep %>%
   mutate(ep = as.factor(ep)) %>% 
