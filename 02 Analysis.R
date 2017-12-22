@@ -95,7 +95,7 @@ partition_results = float_sink %>% apply_partition_curve(cutpoint = 1.6, ep = 0.
          Reject = fraction_mass * recovery_to_reject)
 
 partition_results %>%
-  gather(key,value, -(1:7)) %>%
+  gather(key,value, -(1:11)) %>%
   mutate(key = factor(key, c("Reject","Product"))) %>% 
   ggplot(aes(x = float_sink_fraction,
              y = value/100,
