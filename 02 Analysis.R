@@ -199,11 +199,6 @@ ggsave(
   scale = 3
 )
 
-df_partition_yields %>%
-  mutate(yield_delta = (product_mass - lag(product_mass)) / (product_ash - lag(product_ash))) %>%
-  ggplot(aes(x = cutpoint, y = yield_delta)) +
-  geom_line() +
-  theme_ipsum()
 
 conditions = list(cutpoint = seq(1.2, 1.8, 0.01),
                   ep = c(0.025,0.05,0.1)) %>% cross()
