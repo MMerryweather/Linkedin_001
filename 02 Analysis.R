@@ -165,8 +165,8 @@ df_partition_yields %>%
   theme_ipsum()+
   scale_y_continuous(labels = scales::percent_format(),
                      limits = c(0,1))+
-  labs(title = "Sensitivity Analysis: Ep",
-       subtitle = "Yield-Ash Curves",
+  labs(title = "Modelled Yield",
+       subtitle = "Ep = 0.05",
        x = "Cutpoint",
        y = "Product Yield")
   
