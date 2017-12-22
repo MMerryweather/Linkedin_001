@@ -137,10 +137,16 @@ partition_yields = function(tbl){
     bind_cols(tbl %>% select(cutpoint:t_100) %>% unique())
 }
 
+# works for one cutpoint
 partition_results %>% partition_yields()
 
+# Now try for many cutpoints
 cutpoints = seq(1.2, 1.8, 0.01)
 
+# Use map from purrr to run with various inputs
+# use an anonymous function because the argument we want to change
+# isn't the first one, otherwise we'd just call the function.
+# last line outputs a dataframe and the map_df call binds them
 df_partition_yields = cutpoints %>%
   map(~ apply_partition_curve(
     float_sink_table = float_sink,
@@ -151,11 +157,19 @@ df_partition_yields = cutpoints %>%
 
 head(df_partition_yields)
 
+# now we are plotting the summaries of many simulations
 df_partition_yields %>%
   ggplot(aes(x = cutpoint,
-             y = product_mass)) +
+             y = product_mass/100)) +
   geom_line() +
-  theme_ipsum()
+  theme_ipsum()+
+  scale_y_continuous(labels = scales::percent_format(),
+                     limits = c(0,1))+
+  labs(title = "Sensitivity Analysis: Ep",
+       subtitle = "Yield-Ash Curves",
+       x = "Cutpoint",
+       y = "Product Yield")
+  
 
 df_partition_yields %>%
   ggplot(aes(x = product_ash,
