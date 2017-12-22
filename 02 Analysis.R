@@ -280,7 +280,7 @@ df_yields_ep %>%
   )+
   no_legend_title()
 ggsave(
-  "plot/10 Sensitivity Ash-Yields.png",
+  "plot/11 Recovery Curves.png",
   width = 7.5,
   height = 5,
   units = "cm",
