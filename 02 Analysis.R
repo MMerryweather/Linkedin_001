@@ -165,10 +165,18 @@ df_partition_yields %>%
   theme_ipsum()+
   scale_y_continuous(labels = scales::percent_format(),
                      limits = c(0,1))+
-  labs(title = "Modelled Yield",
+  labs(title = "Model Yield",
        subtitle = "Ep = 0.05",
        x = "Cutpoint",
        y = "Product Yield")
+  ggsave(
+    "plot/08 Model Yields.png",
+    width = 7.5,
+    height = 5,
+    units = "cm",
+    scale = 3
+  )
+
   
 
 df_partition_yields %>%
