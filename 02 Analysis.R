@@ -247,6 +247,13 @@ df_yields_ep %>%
     legend.box.background = element_rect(colour = "white")
   )+
   no_legend_title()
+ggsave(
+  "plot/10 Sensitivity Ash-Yields.png",
+  width = 7.5,
+  height = 5,
+  units = "cm",
+  scale = 3
+)
 
 df_yields_ep %>%
   mutate(ep = as.factor(ep)) %>% 
