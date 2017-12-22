@@ -28,7 +28,7 @@ partition_curve %>% ggplot(aes(floats, recovery_to_product)) +
        x = "SG",
        y = "Recovery to Product (%)")
 ggsave(
-  "C:/Users/user/Desktop/Example/06 Partition Curve.png",
+  "plot/04 Partition Curve.png",
   width = 7.5,
   height = 5,
   units = "cm",
@@ -64,7 +64,7 @@ partition_curves %>% ggplot(aes(x = floats,
     legend.box.background = element_rect(colour = "white")
   )
 ggsave(
-  "C:/Users/user/Desktop/Example/07 Partition Curves.png",
+  "plot/05 Partition Curves.png",
   width = 7.5,
   height = 5,
   units = "cm",
@@ -83,7 +83,7 @@ float_sink %>%
        x = "SG",
        y = "Mass Fraction (%)")
 ggsave(
-  "C:/Users/user/Desktop/Example/08 Float Sinks.png",
+  "plot/06 Float Sinks.png",
   width = 7.5,
   height = 5,
   units = "cm",
@@ -117,7 +117,7 @@ partition_results %>%
     legend.box.background = element_rect(colour = "white")
   )
 ggsave(
-  "C:/Users/user/Desktop/Example/09 Float Sinks Partitioned.png",
+  "plot/07 Float Sinks Partitioned.png",
   width = 7.5,
   height = 5,
   units = "cm",
