@@ -177,13 +177,27 @@ df_partition_yields %>%
     scale = 3
   )
 
-  
 
 df_partition_yields %>%
-  ggplot(aes(x = product_ash,
-             y = product_mass)) +
+  ggplot(aes(x = product_ash/100,
+             y = product_mass/100)) +
   geom_line() +
-  theme_ipsum()
+  theme_ipsum()+
+  scale_x_continuous(labels = scales::percent_format(),
+                     limits = c(0,0.15))+
+  scale_y_continuous(labels = scales::percent_format(),
+                     limits = c(0,1))+
+  labs(title = "Model Ash-Yield Curve",
+       subtitle = "Ep = 0.05",
+       x = "Product Ash",
+       y = "Product Yield")
+ggsave(
+  "plot/09 Model Ash-Yields.png",
+  width = 7.5,
+  height = 5,
+  units = "cm",
+  scale = 3
+)
 
 df_partition_yields %>%
   mutate(yield_delta = (product_mass - lag(product_mass)) / (product_ash - lag(product_ash))) %>%
