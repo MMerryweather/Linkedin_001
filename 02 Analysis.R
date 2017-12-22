@@ -266,7 +266,23 @@ df_yields_ep %>%
   theme_ipsum()+
   no_legend()+
   scale_y_continuous(labels = scales::percent_format())+
-  labs(title = "Sensitivity Analysis: Ep",
-       subtitle = "Yield-Ash Curves",
+  labs(title = "Recovery Curves",
+       subtitle = "Sensitivity Analysis on Ep",
        x = "Cutpoint",
-       y = "Product Yield")
+       y = "Product Yield")+
+  theme(
+    legend.position = c(.95, 0.05),
+    legend.direction = "vertical",
+    legend.justification = c("right", "bottom"),
+    legend.box.just = "right",
+    legend.margin = margin(6, 6, 6, 6),
+    legend.box.background = element_rect(colour = "white")
+  )+
+  no_legend_title()
+ggsave(
+  "plot/10 Sensitivity Ash-Yields.png",
+  width = 7.5,
+  height = 5,
+  units = "cm",
+  scale = 3
+)
